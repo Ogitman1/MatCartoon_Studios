@@ -7,5 +7,5 @@ Esse site é puramente feito com HTML, CSS e JS. O site é feito todo numa únic
 ### Cores:
 * Branco: #F0F0F0;
 * Preto: #100F0D;
-* Bege: #E2D0B6;
+* Bege: #E2D0B6; <br>
 OBS: O mascote possui direitos reservados registrado e a imagem foi rascunhada por mim e aprimorada com IA. 
