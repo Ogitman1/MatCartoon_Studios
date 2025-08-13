@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Checkout - Vídeo Animado + Tráfego</title>
+  <link rel="stylesheet" href="checkout.css">
+  <script src="https://sdk.mercadopago.com/js/v2"></script>
+</head>
+<body>
+  <div class="container">
+    <h1>Planos de Vídeo Animado + Tráfego</h1>
+
+    <div class="plans">
+      <!-- Plano Básico -->
+      <div class="card">
+        <h2>Básico</h2>
+        <p class="price">R$ 800</p>
+        <ul>
+          <li>1 vídeo animado (30s)</li>
+          <li>Tráfego básico (7 dias)</li>
+          <li>Relatório simples</li>
+        </ul>
+        <button onclick="checkout('BASICO')">Assinar</button>
+      </div>
+
+      <!-- Plano Intermediário -->
+      <div class="card">
+        <h2>Intermediário</h2>
+        <p class="price">R$ 1.490</p>
+        <ul>
+          <li>2 vídeos (30s-1min)</li>
+          <li>Tráfego estratégico (15 dias)</li>
+          <li>Otimizações e relatório</li>
+        </ul>
+        <button onclick="checkout('INTERMEDIARIO')">Assinar</button>
+      </div>
+
+      <!-- Plano Avançado -->
+      <div class="card">
+        <h2>Avançado</h2>
+        <p class="price">R$ 2.490</p>
+        <ul>
+          <li>4 vídeos animados</li>
+          <li>Tráfego completo (30 dias)</li>
+          <li>Funil, testes A/B e suporte</li>
+        </ul>
+        <button onclick="checkout('AVANCADO')">Assinar</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="checkout_logic.js"></script>
+</body>
+</html>

@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MatCartoon Studio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <style>
+    .poppins-extralight {
+  font-family: "Poppins", sans-serif;
+  font-weight: 200;
+  font-style: normal;
+}
+
+.poppins-light {
+  font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.poppins-regular {
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.poppins-medium {
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.poppins-semibold {
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-style: normal;
+}
+
+.poppins-bold {
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.poppins-extrabold {
+  font-family: "Poppins", sans-serif;
+  font-weight: 800;
+  font-style: normal;
+}
+
+.poppins-black {
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.poppins-thin-italic {
+  font-family: "Poppins", sans-serif;
+  font-weight: 100;
+  font-style: italic;
+}
+
+.poppins-extralight-italic {
+  font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  font-style: italic;
+}
+
+.poppins-light-italic {
+  font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  font-style: italic;
+}
+@media (max-width: 988px) {
+/*  .slide.active {
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+    text-align: center;
+    flex: 0 0 100%;
+    overflow-y: hidden;
+    height: 100dvh;
+  }*/
+   .slide.active {
+    height: 100dvh !important;
+    min-height: 100dvh !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+    overflow-x: hidden !important;
+  }
+  /* Remove a div #image */
+  #image {
+    display: none !important;
+  }
+
+
+  .slide-content {
+    display: flex !important;
+    text-align: center !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    height: 100% !important;
+    overflow-x: hidden !important;
+    justify-content: center !important;
+    align-items: center !important;
+    flex: 0 0 100% !important;
+    margin: 0 !important
+  }
+  .slide img {
+    max-width: auto !important;
+    height: 30dvh;
+    margin: 1rem auto;
+  }
+
+  .slide h2 {
+    font-size: 20px;
+    margin: 10px 0;
+  }
+
+  .slide p, .slide P {
+    font-size: 14px;
+    line-height: 1.5;
+    max-width: 90vw;
+    margin: 10px auto;
+  }
+
+  .slide .nav {
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 1rem;
+  }
+
+  .slide .nav a {
+    width: 100%;
+    text-align: center;
+  }
+
+  .slide .background-image,
+  .slide .overlay-image {
+    display: none;
+  }
+  .slide {
+    flex-direction: column;
+    height: 100dvh; /* mobile height mais confiável */
+  }
+  #image{
+    display: none;
+    height: 0;
+    width: 0;
+  }
+  #image img{
+    display: none;
+    height: 0;
+    width: 0;
+  }
+}
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #1a1a1a;
+      color: rgb(248, 246, 228);
+      overflow-x: hidden;
+    }
+
+    .slide {
+    z-index: 0;
+      display: none;
+      height: 100vh;
+      width: 100vw;
+      position: absolute;
+      top: 0;
+      left: 0;
+      transition: all 0.6s ease;
+    }
+  
+    .slide *{
+        z-index: 1;
+    }
+    .slide.active {
+
+      display: block;
+      animation: cartoonIn 0.4s ease;
+    }
+    p{
+      color: "#110A0A";
+    }
+    @keyframes slideIn {
+      from { transform: translateX(100%); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
+    }
+
+    @keyframes cartoonIn {
+      0% { transform: scale(0.2) translateY(0deg); opacity: 0;  filter: brightness(3);}
+      20% {filter: brightness(1); opacity: 0.2; filter: brightness(2);}
+      40% {filter: brightness(1); opacity: 0.4; filter: brightness(2);}
+      60% {filter: brightness(1); opacity: 0.6; filter: brightness(2);}
+      80% {filter: brightness(1); opacity: 0.8; filter: brightness(3);}
+      100% { transform: scale(1) translateY(360deg); opacity: 1; }
+    }
+.light-wrapper {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+}
+
+.light-text {
+  position: relative;
+  font-size: 3rem;
+  color: white;
+  padding: 20px;
+  background: linear-gradient(90deg, #fff 0%, #f0f0f0 40%, #fff 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.light-text::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -75%;
+  height: 100%;
+  width: 50%;
+  background: linear-gradient(
+    120deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.4) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: skewX(-20deg);
+  animation: shine 2s infinite;
+}
+
+@keyframes shine {
+  0% {
+    left: -75%;
+  }
+  100% {
+    left: 125%;
+  }
+}
+  /*  .cartoon-transition {
+      animation: cartoonIn 2s ease-in-out infinite;
+    }
+*/
+    button, a {
+      margin-top: 1rem;
+      padding: 0.7rem 1.2rem;
+      background: #f0f0f0;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+      text-decoration: none;
+      display: inline-block;
+      color: black;
+    }
+
+    .cartoon-transition::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -75%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    rgba(199, 184, 184, 0.212) 0%,
+    rgba(253, 255, 152, 0.39) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: skewX(-20deg);
+  animation: shine 2s cubic-bezier(0.33, 1, 0.68, 1);
+  pointer-events: none;
+}
+  </style>
+</head>
+<body>
+
+  <!-- Slides -->
+<section class="slide active" id="slide1" style="
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  color: #e0e0e0;
+  padding: 0;
+  margin: 0;
+">
+
+  <!-- 🎬 Vídeo de fundo -->
+  <video autoplay muted loop playsinline style="
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.3;
+    z-index: -2;">
+    <source src="videohero.mp4" type="video/mp4">
+  </video>
+
+  <!-- 🖼️ Logo por cima do vídeo -->
+  <div style="
+    background-image: url('./logomarca.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 300px;
+    height: 150px;
+    opacity: 0.9;
+    z-index: 1;
+  "></div>
+
+  <!-- ✏️ Texto e Navegação -->
+  <h2 style="font-size: 28px; margin-top: 20px; z-index: 1; text-align: center;">
+    Bem-vindo ao <br>MatCartoon Studio!
+  </h2>
+
+  <p class="poppins-extralight-italic" style="margin-top: 10px; width: 200px; font-size: 17px; z-index: 1; text-align: center;">
+    Movidos por ideias. Guiados por paixão.<br>Te levamos ao topo!
+  </p>
+
+  <div class="nav" style="display: flex; flex-direction: column; justify-content: center; align-items: center; margin-top: 20px; z-index: 1;">
+    <a onclick="goToSlide(2, true)">Conheça a história do estúdio</a>
+    <a onclick="alert('Página de orçamentos em breve!')">Ver orçamentos</a>
+  </div>
+
+</section>
+
+  <div class="slide" id="slide2" style="background-color: #f0f0f0; color: #1a1a1a; justify-content: space-between; text-align: center; align-items: center; ">
+    <img src="eu-removebg-preview-removebg-preview.png" style="border-radius: 201%; transform-origin: center center; object-fit: cover;" height="251" width="251"/>
+    <h2 style="font-family: poppins;">Matheus Felipe</h2>
+    <p class="poppins-extralight-italic">Olá, meu nome é Matheus Felipe.Sou  formado em Tecnologia no Senac com experiência em UX e UI,</p>
+    <p class="poppins-extralight-italic">Já atuei em campanhas visuais da Nestlé, coordenei campanhas de marketing 
+da ONG IVB (Inglês Via Bíblia) 
+— com um legado de 10 anos na área da educação — 
+e também desenvolvi o layout completo do app da organização.</p>
+    <div class="nav">
+      <a onclick="goToSlide(1, true)">⬅ Voltar</a>
+      <a onclick="goToSlide(3, true)">➤</a>
+      <a href="#" onclick="goToSlide(1, true)">Voltar ao início</a>
+    </div>
+   <!-- <div style="background-color: #1a1a1a; flex: 0 0 50%;">
+      
+    </div>-->
+  </div>
+
+  <div class="slide" id="slide3" style="background-color: #f0f0f0; color: #1a1a1a; justify-content: space-between; text-align: center; align-items: center; overflow-y: hidden;">
+    <img src="eu-removebg-preview-removebg-preview.png" style="border-radius: 201%; transform-origin: center center; object-fit: cover;" height="251" width="251""/>
+    <h2 class="poppins-regular">Matheus Felipe</h2>
+    <p class="poppins-extralight-italic">Pedi demissão da Nestlé para criar meu próprio negócio.<br>Transformo marcas em experiências memoráveis!</p>
+    <div class="nav">
+      <a onclick="goToSlide(2, true)">⬅ Voltar</a>
+      <a onclick="goToSlide(4, true)">Veja Relatos</a>
+      <a onclick="alert('Página de orçamentos em breve!')">Ver orçamentos</a>
+      <a href="#" onclick="goToSlide(1, true)">Voltar ao início</a>
+    </div>
+  </div>
+<div class="slide" id="slide4" style="overflow: hidden;" >
+  <!-- Lado esquerdo: Alexandre -->
+  <div class="slide-content" style="background-color: #f0f0f0; color: #1a1a1a; z-index: 20; flex: 0 0 50%; height: 100%; box-sizing: border-box;">
+
+    <img src="professor_alexandre.png" style="border-radius: 201%; object-fit: cover; object-fit: cover;" height="221" width="221"/>
+    <h2 class="poppins-regular">Alexandre Serignolli</h2>
+    <p class="poppins-black">Especialista em Redes/
+Desenvolvedor Devops/ Coaching Senac</p>
+    <p class="poppins-extralight-italic" style="overflow-y: auto; height: 70px;">"Matheus é um rapaz ímpar, raro de se encontrar hoje...Muito interessado em aprender e super engajado, sempre muito criativo e disposto a desenvolver novos projetos...Gosta muito de desafios e se joga de cabeça no que se propõe em fazer...Um menino de coração puro, muito educado, inteligente e competente dentro da área tecnológica, com ele nao existe tempo ruim, merece as melhores recomendações possíveis..."</p>
+    <a onclick="goToSlide(3, true)">⬅ Voltar</a>
+    <a onclick="goToSlide(5, true)">Próximo Relato</a>
+    <a onclick="alert('Página de orçamentos em breve!')">Ver orçamentos</a>
+      <a href="#" onclick="goToSlide(1, true)">Voltar ao início</a>
+  </div>
+
+  <!-- Lado direito: Vira-lata -->
+  <div id="image" style="width: 50%; height: 100vh; display: flex; align-items: center; justify-content: center;">
+    <img src="muttdog.png" style="max-width: 80%; height: 800px; object-fit: fill; margin-top: 300px; z-index: 10;">
+        <img src="sillysymphony.png" style="max-width: 100%; height: 100vh; object-fit: fill;  margin-top: 300px; position: absolute; bottom: 0;">
+  </div>
+</div>
+  
+  <div class="slide" id="slide5" style="overflow: hidden;">
+    
+  <div class="slide-content" style="background-color: #f0f0f0; color: #1a1a1a; z-index: 20; flex: 0 0 50%; height: 100%; box-sizing: border-box;">
+
+    <img src="fabiosantos.jpeg" style="border-radius: 201%; transform-origin: center center;object-fit: cover;" height="200" width="180"/>
+    <h2 class="poppins-regular">Fabio Santos</h2>
+    <P class="poppins-black">Gerente de Excelência Profissional da Nestlé </br> 
+Experiência de 30 anos na Nestlé </P>
+    <p class="poppins-extralight-italic">"Matheus é focado, dedicado e possui uma facilidade de aprendizado acima da média. Ele é um talento que certamente agregaria ao quadro de colaboradores de qualquer empresa.
+Certamente, é um jovem que se destaca."</p>
+      <a onclick="goToSlide(4, true)">⬅ Voltar</a>
+      <a onclick="goToSlide(6, true)">Próximo Relato</a>
+      <a onclick="alert('Página de orçamentos em breve!')">Ver orçamentos</a>
+      <a href="#" onclick="goToSlide(1, true)">Voltar ao início</a>
+      <!-- Lado direito: Vira-lata -->
+       </div>
+ <div id="image" style="width: 50%; height: 100vh; display: flex; align-items: center; justify-content: center;">
+    <img src="muttdog.png" style="max-width: 80%; height: 800px; object-fit: fill; margin-top: 300px; z-index: 10;">
+        <img src="sillysymphony.png" style="max-width: 100%; height: 100vh; object-fit: fill;  margin-top: 300px; position: absolute; bottom: 0;">
+  </div>
+  </div>
+
+  <div class="slide" id="slide6" style="overflow: hidden;">
+    
+  <div class="slide-content" style="background-color: #f0f0f0; color: #1a1a1a; z-index: 20; flex: 0 0 50%; height: 100%; box-sizing: border-box;">
+
+    <img src="wagner.png" style="border-radius: 201%; transform-origin: center center; object-fit: cover; " height="200" width="180"/>
+    <h2 class="poppins-regular">Wagner Marcelino</h2>
+    <P class="poppins-black"">Sistemas de Informação na Mackenzie| </br> 
+Estratégias digitais | </br> 
+Tecnologia e negócios</P>
+    <p class="poppins-extralight-italic">"Conheci o Matheus na igreja e, por coincidência, nós dois cursamos a área de TI. Sempre admirei a dedicação dele, desde o inglês até conseguir o estágio em multinacional. Profissional esforçado, proativo e com vontade de crescer. Recomendo com confiança"</p>
+    
+      <a onclick="goToSlide(5, true)">⬅ Voltar</a>
+      <a onclick="goToSlide(7, true)">Próximo Relato</a>
+      <a onclick="alert('Página de orçamentos em breve!')">Ver orçamentos</a>
+      <a href="#" onclick="goToSlide(1, true)">Voltar ao início</a>
+   
+  </div >
+  <div id="image" style="width: 50%; height: 100vh; display: flex; align-items: center; justify-content: center; ">
+    <img src="muttdog.png" style="max-width: 80%; height: 800px; object-fit: fill; margin-top: 300px; z-index: 10;">
+        <img src="sillysymphony.png" style="max-width: 100%; height: 100vh; object-fit: fill;  margin-top: 300px; position: absolute; bottom: 0;">
+  </div>
+  </div>
+
+  <div class="slide" id="slide7" style="overflow: hidden;">
+     <div class="slide-content" style="background-color: #f0f0f0; color: #1a1a1a; z-index: 20; flex: 0 0 50%; height: 100%; box-sizing: border-box;">
+
+
+        <img src="professor_targino.png" style="border-radius: 201%; transform-origin: center center; object-fit: cover;" height="200" width="210"/>
+    <h2 class="poppins-regular">Prof. WFC Targino</h2>
+    
+    <P class="poppins-black">Diretor Pedagógico da ONG IVB| </br> 
+Professor Fluente em Inglês | </br> 
+Ex-coordenador da CNA</P>
+    <p class="poppins-extralight-italic" style="overflow-y: auto; height: 70px;">"Declaro que MATHEUS SANTOS atuou como COORDENADOR DE MARKETING VOLUNTÁRIO, desempenhando as funções de divulgação, edição de vídeos e design digital. Como Diretor de sua equipe, descobri que o mesmo é um profissional responsável e dedicado. Ademais, foi de grande relevância para nossa organização o seu conhecimento na área de T.I. Além de ser um profissional honesto e dedicado, é também uma excelente pessoa e foi muito gratificante trabalhar ao seu lado."</p>
+      <a onclick="goToSlide(6, true)">⬅ Voltar</a>
+      <a href="#" onclick="goToSlide(1, true)">Voltar ao início</a>
+      <a onclick="alert('Página de orçamentos em breve!')">Ver orçamentos</a>
+   </div>
+
+    <div id="image" style="width: 50%; height: 100vh; display: flex; align-items: center; justify-content: center;">
+    <img src="muttdog.png" style="max-width: 80%; height: 800px; object-fit: fill; margin-top: 300px; z-index: 10;">
+        <img src="sillysymphony.png" style="max-width: 100%; height: 100vh; object-fit: fill;  margin-top: 300px; position: absolute; bottom: 0;">
+  </div>
+  </div>
+
+  <!-- Script -->
+  <script>
+    let currentSlide = 1;
+
+    function goToSlide(n, cartoon = false) {
+      document.getElementById('slide' + currentSlide).classList.remove('active');
+      currentSlide = n;
+      const nextSlide = document.getElementById('slide' + currentSlide);
+      nextSlide.classList.add('active');
+      
+      //Switch case para os slides não se sobreporem ao clicar no botão de voltar
+      switch(currentSlide){
+        case 1: 
+          document.getElementById('slide' + 4).style.display = "none";
+          document.getElementById('slide' + 2).style.display = "none";
+          document.getElementById('slide' + 3).style.display = "none";
+          document.getElementById('slide' + 5).style.display = "none";
+          document.getElementById('slide' + 6).style.display = "none";
+          document.getElementById('slide' + 7).style.display = "none";
+        nextSlide.style.display = "flex";
+        nextSlide.style.height = "100dvh"; break;
+        nextSlide.style.alignItems = "center";
+        nextSlide.style.justifyContent = "center";
+        nextSlide.style.height = "900px";
+        nextSlide.style.width = "100vw";
+        nextSlide.style.flexDirection = "column";
+        
+        
+        case 2: 
+          document.getElementById('slide' + 1).style.display = "none";
+          document.getElementById('slide' + 4).style.display = "none";
+          document.getElementById('slide' + 3).style.display = "none";
+          document.getElementById('slide' + 5).style.display = "none";
+          document.getElementById('slide' + 6).style.display = "none";
+          document.getElementById('slide' + 7).style.display = "none"; 
+          nextSlide.style.display = "block";
+        nextSlide.style.height = "100dvh"; break;
+        case 3: 
+          document.getElementById('slide' + 1).style.display = "none";
+          document.getElementById('slide' + 2).style.display = "none";
+          document.getElementById('slide' + 4).style.display = "none";
+          document.getElementById('slide' + 5).style.display = "none";
+          document.getElementById('slide' + 6).style.display = "none";
+          document.getElementById('slide' + 7).style.display = "none";
+        nextSlide.style.display = "block";
+        nextSlide.style.height = "100dvh"; break;
+        case 4: 
+          document.getElementById('slide' + 1).style.display = "none";
+          document.getElementById('slide' + 2).style.display = "none";
+          document.getElementById('slide' + 3).style.display = "none";
+          document.getElementById('slide' + 5).style.display = "none";
+          document.getElementById('slide' + 6).style.display = "none";
+          document.getElementById('slide' + 7).style.display = "none";
+        nextSlide.style.display = "flex";
+        nextSlide.style.height = "100dvh"; break;
+        case 5:
+          
+          document.getElementById('slide' + 1).style.display = "none";
+          document.getElementById('slide' + 2).style.display = "none";
+          document.getElementById('slide' + 3).style.display = "none";
+          document.getElementById('slide' + 4).style.display = "none";
+          document.getElementById('slide' + 6).style.display = "none";
+          document.getElementById('slide' + 7).style.display = "none";
+        nextSlide.style.display = "flex";
+        nextSlide.style.height = "100dvh"; break;
+        case 6:
+          
+          document.getElementById('slide' + 1).style.display = "none";
+          document.getElementById('slide' + 2).style.display = "none";
+          document.getElementById('slide' + 3).style.display = "none";
+          document.getElementById('slide' + 4).style.display = "none";
+          document.getElementById('slide' + 5).style.display = "none";
+          document.getElementById('slide' + 7).style.display = "none";       
+          nextSlide.style.display = "flex";
+        nextSlide.style.height = "100dvh"; break;
+        case 7:
+          document.getElementById('slide' + 1).style.display = "none";
+          document.getElementById('slide' + 2).style.display = "none";
+          document.getElementById('slide' + 3).style.display = "none";
+          document.getElementById('slide' + 4).style.display = "none";
+          document.getElementById('slide' + 5).style.display = "none";
+          document.getElementById('slide' + 6).style.display = "none";
+        nextSlide.style.display = "flex";
+        nextSlide.style.height = "100dvh"; break;
+      }
+     /* if (cartoon) {
+        nextSlide.classList.add('cartoon-transition');
+        setTimeout(() => nextSlide.classList.remove('cartoon-transition'), 700);
+      }*/
+    }
+  </script>
+</body>
+</html>
